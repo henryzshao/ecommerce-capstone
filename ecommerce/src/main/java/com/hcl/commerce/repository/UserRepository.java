@@ -7,4 +7,6 @@ import com.hcl.commerce.entity.User;
 @org.springframework.stereotype.Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	User findByUsernameAndPassword(String username, String password);
+
 }

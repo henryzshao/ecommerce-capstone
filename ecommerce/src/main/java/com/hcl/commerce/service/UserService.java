@@ -18,4 +18,6 @@ public interface UserService {
 
 	List<User> getAllUser();
 
+	User getUser(String username, String password);
+
 }
