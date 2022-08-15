@@ -1,5 +1,6 @@
 package com.hcl.commerce.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import lombok.Getter;
@@ -8,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductAddDTO {
-	private Long productId;
 	
 	private String productName;
 	
@@ -17,6 +17,8 @@ public class ProductAddDTO {
 	private Date dateCreated;
 	
 	private Date dateLastUpdated;
+	
+	private BigDecimal unitPrice;
 
     private Long category;
 }

@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hcl.commerce.dto.ProductCategoryAddDTO;
+import com.hcl.commerce.dto.ProductCategoryDTO;
 import com.hcl.commerce.entity.ProductCategory;
 import com.hcl.commerce.service.ProductCategoryService;
 
@@ -18,13 +19,23 @@ public class ProductCategoryController {
 	ProductCategoryService productCategoryService;
 	
 	@PostMapping("/admin/productcategory/add")
-	public ProductCategory addCategory(@RequestBody ProductCategoryAddDTO dto) {
+	public ProductCategory addCategory(@RequestBody ProductCategoryDTO dto) {
 		return productCategoryService.addCategory(dto);
 	}
 	
 	@GetMapping("/admin/productcategory/all")
 	public List<ProductCategory> allCategory() {
 		return productCategoryService.getAllProductCategory();
+	}
+	
+	@PostMapping("/admin/productcategory/update")
+	public ProductCategory updateCategory(@RequestBody ProductCategoryDTO dto) {
+		return productCategoryService.updateCategory(dto);
+	}
+	
+	@GetMapping("/admin/productcategory/get/{id}")
+	public ProductCategory getCategory(@PathVariable Long id) {
+		return productCategoryService.getCategory(id);
 	}
 
 	

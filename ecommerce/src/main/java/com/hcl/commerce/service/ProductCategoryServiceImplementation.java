@@ -7,7 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hcl.commerce.dto.ProductCategoryAddDTO;
+import com.hcl.commerce.dto.ProductCategoryDTO;
 import com.hcl.commerce.entity.ProductCategory;
 import com.hcl.commerce.repository.ProductCategoryRepository;
 
@@ -27,7 +27,7 @@ public class ProductCategoryServiceImplementation implements ProductCategoryServ
 	}
 
 	@Override
-	public ProductCategory addCategory(ProductCategoryAddDTO dto) {
+	public ProductCategory addCategory(ProductCategoryDTO dto) {
 		ProductCategory category = new ProductCategory();
 		BeanUtils.copyProperties(dto, category);
 		return productCategoryRepository.save(category);
@@ -36,6 +36,16 @@ public class ProductCategoryServiceImplementation implements ProductCategoryServ
 	@Override
 	public List<ProductCategory> getAllProductCategory() {
 		return productCategoryRepository.findAll();
+	}
+
+	@Override
+	public ProductCategory updateCategory(ProductCategoryDTO dto) {
+		ProductCategory cat = getCategory(dto.getCategoryId());
+		if(cat != null) {
+			BeanUtils.copyProperties(dto, cat);
+			return productCategoryRepository.save(cat);
+		}
+		return null;
 	}
 
 }

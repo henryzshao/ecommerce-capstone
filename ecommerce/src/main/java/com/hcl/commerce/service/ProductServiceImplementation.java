@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.commerce.dto.ProductAddDTO;
-import com.hcl.commerce.dto.ProductUpdateDTO;
+import com.hcl.commerce.dto.ProductDTO;
 import com.hcl.commerce.entity.Product;
 import com.hcl.commerce.repository.ProductRepository;
 
@@ -44,7 +44,7 @@ public class ProductServiceImplementation implements ProductService{
 	}
 
 	@Override
-	public Product updateProduct(ProductUpdateDTO dto) {
+	public Product updateProduct(ProductDTO dto) {
 		Product product = getProduct(dto.getProductId());
 		BeanUtils.copyProperties(dto, product);
 		product.setCategory(productCategoryService.getCategory(dto.getCategory()));

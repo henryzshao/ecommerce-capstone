@@ -16,8 +16,10 @@ import lombok.Setter;
 public class Order {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orderId;
 	
 	private String status;
+	
+	private Long userId;
 }

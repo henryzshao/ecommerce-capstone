@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.hcl.commerce.dto.ProductCategoryAddDTO;
+import com.hcl.commerce.dto.ProductCategoryDTO;
 import com.hcl.commerce.entity.ProductCategory;
 
 @Service
@@ -12,7 +12,9 @@ public interface ProductCategoryService {
 
 	ProductCategory getCategory(Long id);
 
-	ProductCategory addCategory(ProductCategoryAddDTO dto);
+	ProductCategory addCategory(ProductCategoryDTO dto);
 
 	List<ProductCategory> getAllProductCategory();
+
+	ProductCategory updateCategory(ProductCategoryDTO dto);
 }

@@ -1,5 +1,6 @@
 package com.hcl.commerce.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -30,6 +31,8 @@ public class Product {
 	private Date dateCreated;
 	
 	private Date dateLastUpdated;
+	
+	private BigDecimal unitPrice;
 	
 	@ManyToOne
     @JoinColumn(name = "categoryId")
