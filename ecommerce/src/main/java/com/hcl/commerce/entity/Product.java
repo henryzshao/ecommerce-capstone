@@ -1,7 +1,7 @@
 package com.hcl.commerce.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,11 +28,13 @@ public class Product {
 	
 	private int stockCount;
 	
-	private Date dateCreated;
+	private LocalDate dateCreated;
 	
-	private Date dateLastUpdated;
+	private LocalDate dateLastUpdated;
 	
 	private BigDecimal unitPrice;
+	
+	private String image_url;
 	
 	@ManyToOne
     @JoinColumn(name = "categoryId")

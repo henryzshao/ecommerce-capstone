@@ -59,7 +59,7 @@ public class AddressServiceImplementation implements AddressService {
 
 	@Override
 	public Set<User> getUser(Long id) {
-		Address address = getAddress(id);
+		//Address address = getAddress(id);
 		//return address.getUser();
 		return null;
 	}

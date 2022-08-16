@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.commerce.dto.ProductAddDTO;
-import com.hcl.commerce.dto.ProductDTO;
+import com.hcl.commerce.dto.ProductUpdateDTO;
 import com.hcl.commerce.entity.Product;
 import com.hcl.commerce.service.ProductService;
 
@@ -31,7 +31,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/admin/product/update")
-	public Product updateProduct(@RequestBody ProductDTO dto) {
+	public Product updateProduct(@RequestBody ProductUpdateDTO dto) {
 		return productService.updateProduct(dto);
 	}
 	
