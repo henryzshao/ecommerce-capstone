@@ -3,6 +3,7 @@ package com.hcl.commerce.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,21 +23,28 @@ public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
 	private Long productId;
-	
+
+	@Column(name = "product_name")
 	private String productName;
-	
+
+	@Column(name = "stock_count")
 	private int stockCount;
-	
+
+	@Column(name = "date_created")
 	private LocalDate dateCreated;
-	
+
+	@Column(name = "date_last_updated")
 	private LocalDate dateLastUpdated;
-	
-	private BigDecimal unitPrice;
-	
+
+	@Column(name = "unit_price")
+	private BigDecimal unitPrice;	
+
+	@Column(name = "image_url")
 	private String image_url;
 	
 	@ManyToOne
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
     private ProductCategory category;
 }

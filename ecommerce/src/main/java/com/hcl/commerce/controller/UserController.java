@@ -1,7 +1,6 @@
 package com.hcl.commerce.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,51 +10,44 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hcl.commerce.dto.UserDTO;
-import com.hcl.commerce.dto.UserLoginDTO;
-import com.hcl.commerce.dto.UserRegistrationDTO;
-import com.hcl.commerce.entity.Address;
+import com.hcl.commerce.dto.user.UserInputDTO;
+import com.hcl.commerce.dto.user.UserLoginDTO;
 import com.hcl.commerce.entity.User;
-import com.hcl.commerce.service.UserService;
+import com.hcl.commerce.service.user.UserService;
 
 @RestController
 public class UserController {
 	@Autowired
 	UserService userService;
 
-	@PostMapping("/registration") //create
-	public User registerUser(@RequestBody UserRegistrationDTO dto) {
+	@PostMapping("user/registration")
+	public User registerUser(@RequestBody UserInputDTO dto) {
 		return userService.registerUser(dto);
 	}
 
-	@GetMapping("/admin/users/get/{userId}") //read
+	@GetMapping("user/get/{userId}") //read
 	public User getUser(@PathVariable Long userId) {
 		return userService.getUser(userId);
 	}
 	
-	@PostMapping("/admin/users/update")
-	public User updateUser(@RequestBody UserDTO dto) {
-		return userService.updateUser(dto);
+	@PostMapping("user/update/{userId}")
+	public User updateUser(@PathVariable Long userId, @RequestBody UserInputDTO dto) {
+		return userService.updateUser(userId, dto);
 	}
 			
-	@DeleteMapping("/admin/users/delete/{userId}") //delete
+	@DeleteMapping("user/delete/{userId}") //delete
 	public User deleteUser(@PathVariable Long userId) {
 		return userService.deleteUser(userId);
 	}
 
-	@GetMapping("/admin/users/all")
+	@GetMapping("user/all")
 	public List<User> getAllUsers() {
 		return userService.getAllUser();
 	}
 
-	@GetMapping("/login")
-	public User login(@RequestBody UserLoginDTO userLoginDto) {
-		return userService.getUser(userLoginDto.getUsername(), userLoginDto.getPassword());
-	}
-	
-	@GetMapping("/admin/user/address")
-	public Set<Address> getAddress(Long id){
-		return userService.getAddress(id);
+	@PostMapping("user/login")
+	public User loginUser(@RequestBody UserLoginDTO dto) {
+		return userService.getUser(dto.getUsername(), dto.getPassword());
 	}
 	
 }

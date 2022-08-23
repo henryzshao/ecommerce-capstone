@@ -1,7 +1,6 @@
 package com.hcl.commerce.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,10 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hcl.commerce.dto.AddressDTO;
+import com.hcl.commerce.dto.address.AddressCreateDTO;
 import com.hcl.commerce.entity.Address;
-import com.hcl.commerce.entity.User;
-import com.hcl.commerce.service.AddressService;
+import com.hcl.commerce.service.address.AddressService;
 
 @RestController
 public class AddressController {
@@ -22,34 +20,30 @@ public class AddressController {
 	@Autowired
 	AddressService serv;
 	
-	@PostMapping("admin/address/add")
-	public Address addAddress(@RequestBody AddressDTO dto) {
+	@PostMapping("address/create")
+	public Address addAddress(@RequestBody AddressCreateDTO dto) {
 		return serv.addAddress(dto);
 	}
 	
-	@GetMapping("admin/address/get/{id}")
-	public Address getAddress(@PathVariable Long id) {
-		return serv.getAddress(id);
+	@GetMapping("address/get/{address_id}")
+	public Address getAddress(@PathVariable Long address_id) {
+		return serv.getAddress(address_id);
 	}
 	
-	@PostMapping("admin/address/update")
-	public Address updateAddress(@RequestBody AddressDTO dto) {
-		return serv.updateAddress(dto);
+	@PostMapping("address/update/{address_id}")
+	public Address updateAddress(@PathVariable Long address_id, @RequestBody AddressCreateDTO dto) {
+		return serv.updateAddress(address_id, dto);
 	}
 	
-	@DeleteMapping("admin/address/delete/{id}")
-	public Address deleteAddress(@PathVariable Long id) {
-		return serv.deleteAddress(id);
+	@DeleteMapping("address/delete/{address_id}")
+	public Address deleteAddress(@PathVariable Long address_id) {
+		System.out.println(address_id);
+		return serv.deleteAddress(address_id);
 	}
 	
-	@GetMapping("admin/address/all")
+	@GetMapping("address/all")
 	public List<Address> allAddress(){
 		return serv.getAllAddress();
-	}
-	
-	@GetMapping("admin/address/user")
-	public Set<User> getUser(@PathVariable Long id) {
-		return serv.getUser(id);
 	}
 	
 }

@@ -9,31 +9,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hcl.commerce.dto.ProductCategoryDTO;
+import com.hcl.commerce.dto.category.ProductCategoryDTO;
+import com.hcl.commerce.dto.category.ProductCategoryUpdateDTO;
 import com.hcl.commerce.entity.ProductCategory;
-import com.hcl.commerce.service.ProductCategoryService;
+import com.hcl.commerce.service.category.ProductCategoryService;
 
 @RestController
 public class ProductCategoryController {
 	@Autowired
 	ProductCategoryService productCategoryService;
 	
-	@PostMapping("/admin/productcategory/add")
+	@PostMapping("category/add")
 	public ProductCategory addCategory(@RequestBody ProductCategoryDTO dto) {
 		return productCategoryService.addCategory(dto);
 	}
 	
-	@GetMapping("/admin/productcategory/all")
+	@GetMapping("category/all")
 	public List<ProductCategory> allCategory() {
 		return productCategoryService.getAllProductCategory();
 	}
 	
-	@PostMapping("/admin/productcategory/update")
-	public ProductCategory updateCategory(@RequestBody ProductCategoryDTO dto) {
+	@PostMapping("category/update")
+	public ProductCategory updateCategory(@RequestBody ProductCategoryUpdateDTO dto) {
 		return productCategoryService.updateCategory(dto);
 	}
 	
-	@GetMapping("/admin/productcategory/get/{id}")
+	@GetMapping("category/get/{id}")
 	public ProductCategory getCategory(@PathVariable Long id) {
 		return productCategoryService.getCategory(id);
 	}

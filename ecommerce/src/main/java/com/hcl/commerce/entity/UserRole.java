@@ -11,16 +11,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product_category")
+@Table(name = "user_role")
 @Getter
 @Setter
-public class ProductCategory {
+public class UserRole {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id")
-	private Long categoryId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long userRoleId;
+	
+	@Column(name = "user_id")
+	private Long userId;
 
-	@Column(name = "category_name")
-	private String categoryName;
+	@Column(name = "role_id")
+	private Long roleId;
+
 }
